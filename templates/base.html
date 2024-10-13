@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender</title>
+    <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
+    <!-- Tailwind CSS and FontAwesome 6 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #FFD700;
+            --secondary-color: #E6B800;
+            --accent-color: #FFC107;
+        }
+        
+        body {
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        
+        .movie-card {
+            background-color: #2d2d2d;
+            transition: all 0.3s ease;
+        }
+        
+        .movie-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .movie-card:hover .movie-title {
+            color: var(--primary-color);
+            font-size: 1.1em;
+        }
+        
+        .chevron-next, .chevron-prev {
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .chevron-next:hover, .chevron-prev:hover {
+            color: var(--secondary-color);
+            transform: scale(1.2);
+        }
+        
+        .movie-modal {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+        
+        .modal-content {
+            background-color: #2d2d2d;
+            border: 2px solid var(--primary-color);
+        }
+        
+        .slider {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .slider-content {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        /* Curved dark background styling */
+        .curved-bg {
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 50%, transparent 100%);
+            border-radius: 50% 50% 0 0;
+            height: 300px;
+            position: relative;
+        }
+        
+        .slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-900 p-4">
+        <div class="container mx-auto flex items-center">
+            <a href="{{ url_for('featured_movies') }}" class="flex items-center space-x-2">
+                <img src="/static/logo.png" alt="Movie Recommender Logo" class="w-12 h-12">
+                <span class="text-2xl font-bold text-white">Movie Recommender</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="container mx-auto px-4 py-8">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Optional JavaScript can be added here if needed -->
+</body>
+</html>
